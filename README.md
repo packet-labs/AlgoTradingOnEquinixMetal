@@ -58,6 +58,8 @@ export APCA_API_SECRET_KEY="CORRESPONDING_SECRET_HERE"
 With all the dependencies in place, the algo can be started up with the following command. The algo will connect to Alpaca, authenticate, and start streaming down trading inforation identifying trades to execute. If the U.S. stock market is closed, the algo will dutifully wait until it opens and then start trading. Approximately 15 minutes before the U.S markets close (3:45pm ET), the algo will start closing out positions to end the day with no positions open (long or short).
 
 ```
+wget https://raw.githubusercontent.com/alpacahq/alpaca-trade-api-go/master/examples/long-short/long-short.go
+go mod init long-short.go
 go run long-short.go
 ```
 
