@@ -1,4 +1,4 @@
-# Algorithmic Trading
+# Algorithmic Trading on Equinix Metal
 
 Imagine a machine learning model that can process a data stream, be it the live video stream of a product launch, financial earnings reports, a political speech, or general consumer sentiment gauged by processing a real-time Twitter feed, used to determine the execution of stock and equities trades. Such algorithmics (or algos) require a deep pool of computing resources to quickly process and execute upon identified trends. Equinix Metal provides the bare metal infrastrucure needed for such performance as well as the network interconnection capabilities to connect to upstream financial service providers.
 
@@ -7,6 +7,8 @@ This repo showcases uses Equinix Metal to deploy one such algo which communicate
 # Prerequisites
 
 An account with Equinix Metal and with Alpaca are required to run this algo. Equinix Metal infrastructure is available on a per hour charge and the Alpaca services are free.
+
+No financial outlay with Alpaca is required to run this demonstration as it uses a "paper trading" account. Paper trading uses live market data and while trades that are submitted are recorded and profits/loss are tracked, the gains (or losses) are purely fictional.
 
 ## Equinix Metal Account
 
