@@ -1,8 +1,8 @@
 # Algorithmic Trading on Equinix Metal
 
-Imagine a machine learning model that can process a data stream, be it the live video stream of a product launch, financial earnings reports, a political speech, or general consumer sentiment gauged by processing a real-time Twitter feed, used to determine the execution of stock and equities trades. Such algorithmics (or algos) require a deep pool of computing resources to quickly process and execute upon identified trends. Equinix Metal provides the bare metal infrastrucure needed for such performance as well as the network interconnection capabilities to connect to upstream financial service providers.
+Imagine a machine learning model that can process a data stream (eg:the live video stream of a product launch, financial earnings reports, a political speech, or general consumer sentiment gauged by processing a real-time Twitter feed) and use the information to determine the execution of stock and equities trades. Such algorithmics (or algos) require a deep pool of computing resources to quickly process and execute upon identified trends. Equinix Metal provides the bare metal infrastrucure needed for such performance. It also provides the network interconnection capabilities to connect to upstream financial service providers.
 
-This repo showcases uses Equinix Metal to deploy one such algo which communicates to the Alpaca stock trading API. Alpaca provides both a REST (pull) and streaming (push) API accessible via the programming language of your choice. For this repo, a sample algo written in Go is used. The deployed algo uses a "long/short" to continously monitor a basket of stocks identifying those to go long (purchase) and those to go short (sell). The algorithm runs continously with no human intervention and closes out all positions before the end of the trading day.
+This repo showcases the use of Equinix Metal to deploy one such algo which communicates to the Alpaca stock trading API. Alpaca provides both a REST (pull) and streaming (push) API (accessible via the programming language of your choice). For this repo, we use a sample algo written in Go. The deployed algo uses a "long/short" to continously monitor a select bucket of stocks and identifies those to go long (purchase) and those to go short (sell). The algorithm runs continously with no human intervention, and closes out all positions before the end of the trading day.
 
 # Prerequisites
 
@@ -20,11 +20,11 @@ Alpaca provides a trading API and access to the U.S. financial markets. An Alpac
 
 # Deploying an Algo
 
-Deploying an Algo requires underling compute infrastructure, Alpaca credentials, and the algorithm itself (source code or binary). The long-short algo is written in Go which will be run on an Ubuntu server deployed from Equinix Metal.
+Deploying an Algo requires underling compute infrastructure, Alpaca credentials, and the algorithm itself (source code or binary). The long-short algo is written in Go, run on an Ubuntu server, and deployed from Equinix Metal.
 
 ## Deploy Equinix Metal
 
-Equinix Metal provides both an API and GUI to deploy infrastructure. This algo requires a single compute instance so the GUI will be used. Via the Equinix Metal console (https://console.equinix.com/), create a new project, and deploy an "on-demand", IAD 2, c3.medium.x86, Ubuntu 20.04 instance. Once it has started, via the Overview tab, copy the SSH root password and take note of the "Public IPv4" address.
+Equinix Metal provides both an API and GUI to deploy infrastructure. This algo requires a single compute instance so the GUI will be used. Via the Equinix Metal console (https://console.equinix.com/), create a new project, and deploy an "on-demand," IAD 2, c3.medium.x86, Ubuntu 20.04 instance. Once it has started, copy the SSH root password (via the verview tab) and take note of the "Public IPv4" address.
 
 
 ## Server Software Dependencies
@@ -55,7 +55,7 @@ export APCA_API_SECRET_KEY="CORRESPONDING_SECRET_HERE"
 
 ## Deploy Algo
 
-With all the dependencies in place, the algo can be started up with the following command. The algo will connect to Alpaca, authenticate, and start streaming down trading inforation identifying trades to execute. If the U.S. stock market is closed, the algo will dutifully wait until it opens and then start trading. Approximately 15 minutes before the U.S markets close (3:45pm ET), the algo will start closing out positions to end the day with no positions open (long or short).
+With all the dependencies in place, the algo can be started up with the following command. The algo will connect to Alpaca, authenticate, and start streaming down trading inforation and identifying trades to execute. If the U.S. stock market is closed, the algo will dutifully wait until it opens and then start trading. Approximately 15 minutes before the U.S markets close (3:45pm ET), the algo will start closing out positions, ending the day with no positions open (long or short).
 
 ```
 wget https://raw.githubusercontent.com/alpacahq/alpaca-trade-api-go/master/examples/long-short/long-short.go
@@ -65,8 +65,8 @@ go run long-short.go
 
 ## Tear Down
 
-The deployed metal should be torn down (released) when no longer needed as the resources are billed by the hour. Simply navigate back to the Equinix Console and "Delete" the deployed instance. It can be recreated at a later time to re-run the algo. 
+Because resources are billed by the hours, the deployed metal should be torn down (released) when no longer needed. Simply navigate back to the Equinix Console and "Delete" the deployed instance. It can be recreated at a later time to re-run the algo. 
 
 ## What's next?
 
-This is a basic algo run across a single metal instance without any external data analysis. From here, an algorithm can processes other data sources, such as audio, video, press releases, Twitter, weather, etc to build its trading model. This will undoubtably require additional compute power requiring more larger and more complex infrastructure that can be provided via Equinix Metal.
+This is a basic algo run across a single metal instance without any external data analysis. From here, an algorithm can processes other data sources, such as audio, video, press releases, Twitter, weather, etc to build its trading model. This will undoubtably require additional compute power requiring more larger and more complex infrastructure  - all of which can be provided via Equinix Metal.
