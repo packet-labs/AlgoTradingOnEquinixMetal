@@ -1,12 +1,12 @@
 # Algorithmic Trading on Equinix Metal
 
-Imagine a machine learning model that can process a data stream (eg:the live video stream of a product launch, financial earnings reports, a political speech, or general consumer sentiment gauged by processing a real-time Twitter feed) and use the information to determine the execution of stock and equities trades. Such algorithmics (or algos) require a deep pool of computing resources to quickly process and execute upon identified trends. Equinix Metal provides the bare metal infrastrucure needed for such performance. It also provides the network interconnection capabilities to connect to upstream financial service providers.
+Imagine a machine learning model that can process a data stream (eg:the live video stream of a product launch, financial earnings reports, a political speech, or general consumer sentiment gauged by processing a real-time Twitter feed) and use the information to execute stock and commodity trades. Such algorithmics (or algos) require a deep pool of computing resources to quickly process and execute upon identified trends. Equinix Metal provides just such computing power through its bare metal cloud. It also provides the network interconnection capabilities to connect to upstream financial service providers.
 
 This repo showcases the use of Equinix Metal to deploy one such algo which communicates to the Alpaca stock trading API. Alpaca provides both a REST (pull) and streaming (push) API (accessible via the programming language of your choice). For this repo, we use a sample algo written in Go. The deployed algo uses a "long/short" to continously monitor a select bucket of stocks and identifies those to go long (purchase) and those to go short (sell). The algorithm runs continously with no human intervention, and closes out all positions before the end of the trading day.
 
 # Prerequisites
 
-An account with Equinix Metal and with Alpaca are required to run this algo. Equinix Metal infrastructure is available on a per hour charge and the Alpaca services are free.
+An account with Equinix Metal and with Alpaca are required to run this algo. Equinix Metal infrastructure is available on a per hour charge and the Alpaca API and trading services are free.
 
 No financial outlay with Alpaca is required to run this demonstration as it uses a "paper trading" account. Paper trading uses live market data and while trades that are submitted are recorded and profits/loss are tracked, the gains (or losses) are purely fictional.
 
